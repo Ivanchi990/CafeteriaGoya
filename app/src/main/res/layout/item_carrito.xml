@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="60dp">
 
+    <TextView
+        android:id="@+id/nombreProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Paella"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/costeProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="-45€"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="25dp"
+        app:layout_constraintLeft_toLeftOf="@id/nombreProducto"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/buttonEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="10dp"
+        android:text="Eliminar"
+        tools:layout_editor_absoluteX="289dp"
+        tools:layout_editor_absoluteY="6dp"
+        app:layout_constraintLeft_toLeftOf="@id/costeProducto"
+        app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
