@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity()
         }
         else
         {
-            intent = Intent(this, MenuActivity::class.java).apply {
+            intent = Intent(this, FragmentActivity::class.java).apply {
                 putExtra("hora", binding!!.tvTiempo.text.toString())
             }
 
