@@ -1,6 +1,6 @@
 package aad.cafeteriagoya.fragments
 
-import aad.cafeteriagoya.DataProvider
+import aad.cafeteriagoya.provider.DataProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

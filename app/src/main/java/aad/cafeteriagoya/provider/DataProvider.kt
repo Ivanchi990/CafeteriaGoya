@@ -1,4 +1,4 @@
-package aad.cafeteriagoya
+package aad.cafeteriagoya.provider
 
 import aad.cafeteriagoya.entidades.Producto
 

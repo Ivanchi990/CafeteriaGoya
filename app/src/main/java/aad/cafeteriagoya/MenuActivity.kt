@@ -1,9 +1,10 @@
 package aad.cafeteriagoya
 
-import aad.cafeteriagoya.DataProvider.Companion.listaProductos
+import aad.cafeteriagoya.provider.DataProvider.Companion.listaProductos
 import aad.cafeteriagoya.adapter.MenuAdaptador
 import aad.cafeteriagoya.databinding.ActivityMenuBinding
 import aad.cafeteriagoya.entidades.Producto
+import aad.cafeteriagoya.provider.DataProvider
 import aad.cafeteriagoya.sqlite.MiBDOpenHelper
 import android.content.Intent
 import android.os.Bundle

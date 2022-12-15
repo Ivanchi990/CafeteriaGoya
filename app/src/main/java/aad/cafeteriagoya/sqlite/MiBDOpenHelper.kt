@@ -58,9 +58,17 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     fun obtenerCarrito(): Cursor
     {
-        val db= this.readableDatabase
+        val db = this.readableDatabase
         var cursor = db.rawQuery("SELECT * FROM ${MiBDOpenHelper.T_PRODUCTOS}", null)
 
         return cursor
+    }
+
+
+    fun eliminarProducto(pos: Int)
+    {
+        val db = this.writableDatabase
+
+        db.rawQuery("DELETE FROM ${MiBDOpenHelper.T_PRODUCTOS} WHERE ${MiBDOpenHelper.PRODUCTO_ID} = $pos", null)
     }
 }
