@@ -1,7 +1,6 @@
 package aad.cafeteriagoya
 
 import aad.cafeteriagoya.databinding.ActivityFragmentBinding
-import aad.cafeteriagoya.databinding.FragmentCarritoBinding
 import aad.cafeteriagoya.fragments.CarritoFragment
 import aad.cafeteriagoya.fragments.MenuFragment
 import aad.cafeteriagoya.fragments.ProductViewModel
@@ -42,7 +41,7 @@ class FragmentActivity : AppCompatActivity()
             mostrarCarrito()
         }
 
-        binding?.btnCarrito?.setOnClickListener{
+        binding?.btnMenu?.setOnClickListener{
             mostrarMenu()
         }
 
@@ -52,7 +51,7 @@ class FragmentActivity : AppCompatActivity()
 
     fun mostrarCarrito()
     {
-        val transaction= supportFragmentManager.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
         val fragmento = CarritoFragment()
 
         transaction.replace(R.id.fragmentContainerView, fragmento)
@@ -63,7 +62,7 @@ class FragmentActivity : AppCompatActivity()
 
     fun mostrarMenu()
     {
-        val transaction= supportFragmentManager.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
         val fragmento = MenuFragment()
 
         transaction.replace(R.id.fragmentContainerView, fragmento)
