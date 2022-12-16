@@ -69,6 +69,6 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
     {
         val db = this.writableDatabase
 
-        db.rawQuery("DELETE FROM ${MiBDOpenHelper.T_PRODUCTOS} WHERE ${MiBDOpenHelper.PRODUCTO_ID} = $pos", null)
+        val n = db.rawQuery("DELETE FROM ${MiBDOpenHelper.T_PRODUCTOS} WHERE ${MiBDOpenHelper.PRODUCTO_ID} = $pos", null)
     }
 }

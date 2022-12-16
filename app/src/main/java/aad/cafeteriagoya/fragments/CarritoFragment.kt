@@ -70,7 +70,7 @@ class CarritoFragment : Fragment()
 
         while(carro!!.moveToNext())
         {
-            lista.add(Producto(carro.getInt(0), carro.getString(1), carro.getDouble(2), carro.getString(3)))
+            lista.add(Producto(carro.getInt(1), carro.getString(2), carro.getDouble(3), carro.getString(4)))
         }
 
         return lista
@@ -86,9 +86,13 @@ class CarritoFragment : Fragment()
 
     fun dameID(pos: Int)
     {
-        productViewModel.getDatabase().eliminarProducto(pos)
+        var base = productViewModel.getDatabase()
+
+        base.eliminarProducto(pos)
 
         lista = dameCarrito()
+
+        adapterCarrito.carrito = lista
 
         adapterCarrito.notifyDataSetChanged()
     }
