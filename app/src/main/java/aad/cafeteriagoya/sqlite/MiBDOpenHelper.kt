@@ -22,8 +22,7 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        var crearTablaPorductos = "CREATE TABLE $T_PRODUCTOS " +
-                "($PRODUCTO_INSERCION_ID INTEGER PRIMARY KEY AUTOINCREMENT, $PRODUCTOS TEXT)"
+        var crearTablaPorductos = "CREATE TABLE $T_PRODUCTOS ($PRODUCTO_INSERCION_ID INTEGER PRIMARY KEY AUTOINCREMENT, $PRODUCTOS TEXT)"
         var insercion_producto_prueba = "INSERT INTO $T_PRODUCTOS($PRODUCTOS) VALUES('0-0-0-0');"
 
         db!!.execSQL(crearTablaPorductos)
@@ -39,7 +38,7 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
     {
         val db = this.writableDatabase
 
-        var insercion = "INSERT INTO $T_PRODUCTOS($PRODUCTOS) VALUES($productos);"
+        var insercion = "INSERT INTO $T_PRODUCTOS(${MiBDOpenHelper.PRODUCTOS}) VALUES($productos);"
 
         db!!.execSQL(insercion)
 

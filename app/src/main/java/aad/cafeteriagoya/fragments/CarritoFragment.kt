@@ -83,6 +83,8 @@ class CarritoFragment : Fragment()
     {
         productViewModel.carrito.remove(pos)
 
+        productViewModel.setPrecio()
+
         iniciarRecyclerCarrito()
     }
 }

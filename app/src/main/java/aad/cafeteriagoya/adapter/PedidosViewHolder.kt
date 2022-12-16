@@ -1,6 +1,8 @@
 package aad.cafeteriagoya.adapter
 
 import aad.cafeteriagoya.R
+import aad.cafeteriagoya.entidades.Producto
+import aad.cafeteriagoya.provider.DataProvider
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -25,6 +27,14 @@ class PedidosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun damePrecio(pedido: String): String
     {
-        return ""
+        var productos = pedido.split("-")
+        var money = 0.0
+
+        for(p in productos)
+        {
+            money += DataProvider.listaProductos[p.toInt()].precio
+        }
+
+        return money.toString()
     }
 }

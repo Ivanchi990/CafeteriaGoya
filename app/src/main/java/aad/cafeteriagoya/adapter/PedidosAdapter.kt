@@ -18,6 +18,7 @@ class PedidosAdapter(private val onClickListener: (Int) -> Unit): RecyclerView.A
         this.pedidos = cursor
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidosViewHolder
     {
         val layoutInflater = LayoutInflater.from(parent.context)
