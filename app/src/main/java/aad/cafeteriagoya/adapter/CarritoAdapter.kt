@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class CarritoAdapter(private val onClickListener: (Int) -> Unit): RecyclerView.Adapter<CarritoViewHolder>()
+class CarritoAdapter(private val onClickListener: (Producto) -> Unit): RecyclerView.Adapter<CarritoViewHolder>()
 {
     private lateinit var context: Context
     lateinit var carrito: ArrayList<Producto>

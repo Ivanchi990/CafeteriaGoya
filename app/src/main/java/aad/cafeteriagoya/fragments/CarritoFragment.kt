@@ -21,7 +21,6 @@ class CarritoFragment : Fragment()
     var binding: FragmentCarritoBinding? = null
     val productViewModel: ProductViewModel by activityViewModels()
     lateinit var adapterCarrito: CarritoAdapter
-    var lista = ArrayList<Producto>()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -37,7 +36,7 @@ class CarritoFragment : Fragment()
 
         binding?.fabHome?.setOnClickListener()
         {
-            volverCasa()
+            pagar()
         }
 
         return frag.root
@@ -53,47 +52,34 @@ class CarritoFragment : Fragment()
             onClickListener = { pos -> dameID(pos) }
         )
 
-        lista = dameCarrito()
-
-        adapterCarrito.CarritoAdapter(productViewModel.getContext(),  lista)
+        adapterCarrito.CarritoAdapter(productViewModel.getContext(),  productViewModel.carrito)
 
         recyclerView?.adapter = adapterCarrito
     }
 
-    fun dameCarrito(): ArrayList<Producto>
+
+    fun pagar()
     {
-        var lista = ArrayList<Producto>()
+        var pro = ""
 
-        val base = productViewModel?.getDatabase()
-
-        val carro = base?.obtenerCarrito()
-
-        while(carro!!.moveToNext())
+        for(p in productViewModel.carrito)
         {
-            lista.add(Producto(carro.getInt(1), carro.getString(2), carro.getDouble(3), carro.getString(4)))
+            pro = pro + "-" + p.id
         }
 
-        return lista
-    }
+        var base = productViewModel.getDatabase()
 
+        base.andirProducto(pro)
 
-    fun volverCasa()
-    {
         var intent = Intent(productViewModel.getContext(), MainActivity:: class.java)
 
         startActivity(intent)
     }
 
-    fun dameID(pos: Int)
+    fun dameID(pos: Producto)
     {
-        var base = productViewModel.getDatabase()
+        productViewModel.carrito.remove(pos)
 
-        base.eliminarProducto(pos)
-
-        lista = dameCarrito()
-
-        adapterCarrito.carrito = lista
-
-        adapterCarrito.notifyDataSetChanged()
+        iniciarRecyclerCarrito()
     }
 }

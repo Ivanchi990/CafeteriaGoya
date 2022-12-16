@@ -1,5 +1,6 @@
 package aad.cafeteriagoya.fragments
 
+import aad.cafeteriagoya.entidades.Producto
 import aad.cafeteriagoya.sqlite.MiBDOpenHelper
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -9,9 +10,10 @@ class ProductViewModel: ViewModel()
 {
     private var totalPrecio: MutableLiveData<String> = MutableLiveData<String>()
     private var base: MiBDOpenHelper? = null
-    var precioTotal = 0
+    var precioTotal = 0.0
     var horaPedido = ""
     lateinit var contexto: Context
+    var carrito = ArrayList<Producto>()
 
     init
     {
@@ -30,21 +32,14 @@ class ProductViewModel: ViewModel()
 
     fun setPrecio()
     {
-        var carrito = base!!.obtenerCarrito()
+        precioTotal = 0.0
 
-        carrito.moveToFirst()
+       for(p in carrito)
+       {
+           precioTotal += p.precio
+       }
 
-        if(carrito.position == -1)
-        {
-            precioTotal = precioTotal + carrito.getString(3).toInt()
-
-            while (carrito.moveToNext())
-            {
-                precioTotal = precioTotal + carrito.getString(3).toInt()
-            }
-        }
-
-        totalPrecio.setValue("Total: $precioTotal€")
+        totalPrecio.value = "Total: $precioTotal€"
     }
 
     fun getPrecio(): MutableLiveData<String>

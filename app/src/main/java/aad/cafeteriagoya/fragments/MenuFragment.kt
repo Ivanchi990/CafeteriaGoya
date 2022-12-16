@@ -94,7 +94,7 @@ class MenuFragment : Fragment()
 
     fun dameID(pos: Int)
     {
-        base?.andirProducto(DataProvider.listaProductos[pos-1])
+        productViewModel.carrito.add(DataProvider.listaProductos.get(pos-1))
         productViewModel.setPrecio()
     }
 }

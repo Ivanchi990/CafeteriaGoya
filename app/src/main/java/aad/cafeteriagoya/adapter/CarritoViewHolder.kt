@@ -18,13 +18,13 @@ class CarritoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     var textViewPrecio = itemView.findViewById<TextView>(R.id.costeProducto)
     var button = itemView.findViewById<Button>(R.id.buttonEliminar)
 
-    fun render(producto: Producto, onClickListener: (Int) -> Unit)
+    fun render(producto: Producto, onClickListener: (Producto) -> Unit)
     {
         textViewProducto.text = producto.nombre
         textViewPrecio.text = producto.precio.toString() + "€"
 
         button.setOnClickListener {
-            onClickListener(producto.id)
+            onClickListener(producto)
         }
     }
 }
