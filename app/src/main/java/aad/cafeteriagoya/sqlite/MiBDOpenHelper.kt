@@ -53,4 +53,12 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         return cursor
     }
+
+    fun obtenerPedido(pos: Int): Cursor
+    {
+        val db = this.readableDatabase
+        var cursor = db.rawQuery("SELECT * FROM ${MiBDOpenHelper.T_PRODUCTOS} WHERE ${MiBDOpenHelper.PRODUCTO_INSERCION_ID} = $pos", null)
+
+        return cursor
+    }
 }

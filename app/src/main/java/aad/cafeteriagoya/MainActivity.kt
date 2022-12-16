@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity()
             guardarHora()
         }
 
+        binding?.button2?.setOnClickListener{
+            mostrarPedidos()
+        }
+
         setContentView(binding!!.root)
     }
 
@@ -37,6 +41,14 @@ class MainActivity : AppCompatActivity()
 
             startActivity(intent)
         }
+    }
+
+
+    fun mostrarPedidos()
+    {
+        intent = Intent(this, PedidosActivity::class.java)
+
+        startActivity(intent)
     }
 }
 

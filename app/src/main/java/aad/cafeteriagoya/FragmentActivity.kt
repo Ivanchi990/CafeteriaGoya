@@ -8,6 +8,7 @@ import aad.cafeteriagoya.sqlite.MiBDOpenHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 
 class FragmentActivity : AppCompatActivity()
@@ -41,6 +42,8 @@ class FragmentActivity : AppCompatActivity()
             mostrarCarrito()
         }
 
+        binding?.btnMenu?.isVisible = false
+
         binding?.btnMenu?.setOnClickListener{
             mostrarMenu()
         }
@@ -56,6 +59,10 @@ class FragmentActivity : AppCompatActivity()
 
         transaction.replace(R.id.fragmentContainerView, fragmento)
         transaction.addToBackStack(null)
+
+        binding?.btnCarrito?.isVisible = false
+        binding?.btnMenu?.isVisible = true
+
         transaction.commit()
     }
 
@@ -67,6 +74,10 @@ class FragmentActivity : AppCompatActivity()
 
         transaction.replace(R.id.fragmentContainerView, fragmento)
         transaction.addToBackStack(null)
+
+        binding?.btnCarrito?.isVisible = true
+        binding?.btnMenu?.isVisible = false
+
         transaction.commit()
     }
 }

@@ -13,6 +13,7 @@ import aad.cafeteriagoya.databinding.FragmentCarritoBinding
 import aad.cafeteriagoya.databinding.FragmentMenuBinding
 import aad.cafeteriagoya.entidades.Producto
 import android.content.Intent
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -70,6 +71,8 @@ class CarritoFragment : Fragment()
         var base = productViewModel.getDatabase()
 
         base.andirProducto(pro)
+
+        Toast.makeText(productViewModel.getContext(), "El pago se ha procesado correctamente.", Toast.LENGTH_SHORT).show()
 
         var intent = Intent(productViewModel.getContext(), MainActivity:: class.java)
 
