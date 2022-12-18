@@ -9,7 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
 class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
-    SQLiteOpenHelper(contex, DATABASE_NAME, factory, DATABASE_VERSION) {
+    SQLiteOpenHelper(contex, DATABASE_NAME, factory, DATABASE_VERSION)
+{
 
     val TAG = "SQLite"
 
@@ -21,15 +22,19 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
         val PRODUCTOS = "productos"
     }
 
-    override fun onCreate(db: SQLiteDatabase?) {
-        var crearTablaPorductos = "CREATE TABLE $T_PRODUCTOS ($PRODUCTO_INSERCION_ID INTEGER PRIMARY KEY AUTOINCREMENT, $PRODUCTOS TEXT)"
+    override fun onCreate(db: SQLiteDatabase?)
+    {
+        var crearTablaPorductos = "CREATE TABLE $T_PRODUCTOS ($PRODUCTO_INSERCION_ID " +
+                "INTEGER PRIMARY KEY AUTOINCREMENT, $PRODUCTOS TEXT)"
         var insercion_producto_prueba = "INSERT INTO $T_PRODUCTOS($PRODUCTOS) VALUES('0-0-0-0');"
 
         db!!.execSQL(crearTablaPorductos)
         db!!.execSQL(insercion_producto_prueba)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
+    {
         Log.e("$TAG (onUpgrade)", "Pendiente de realizar")
     }
 
@@ -38,25 +43,27 @@ class MiBDOpenHelper(contex: Context, factory: SQLiteDatabase.CursorFactory?) :
     {
         val db = this.writableDatabase
 
-        var insercion = "INSERT INTO $T_PRODUCTOS(${MiBDOpenHelper.PRODUCTOS}) VALUES($productos);"
+        var insercion = "INSERT INTO $T_PRODUCTOS(${MiBDOpenHelper.PRODUCTOS}) VALUES('$productos');"
 
         db!!.execSQL(insercion)
 
         db.close()
     }
 
+
     fun obtenerCarrito(): Cursor
     {
-        val db = this.readableDatabase
+        val db= this.readableDatabase
         var cursor = db.rawQuery("SELECT * FROM ${MiBDOpenHelper.T_PRODUCTOS}", null)
 
         return cursor
     }
 
+
     fun obtenerPedido(pos: Int): Cursor
     {
         val db = this.readableDatabase
-        var cursor = db.rawQuery("SELECT * FROM ${MiBDOpenHelper.T_PRODUCTOS} WHERE ${MiBDOpenHelper.PRODUCTO_INSERCION_ID} = $pos", null)
+        var cursor = db.rawQuery("SELECT * FROM ${MiBDOpenHelper.T_PRODUCTOS} WHERE $PRODUCTO_INSERCION_ID = $pos", null)
 
         return cursor
     }

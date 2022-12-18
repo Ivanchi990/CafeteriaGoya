@@ -65,14 +65,17 @@ class CarritoFragment : Fragment()
 
         for(p in productViewModel.carrito)
         {
-            pro = pro + "-" + p.id
+            pro = pro + p.id + "-"
         }
 
         var base = productViewModel.getDatabase()
 
-        base.andirProducto(pro)
+        if(productViewModel.carrito.size  > 0)
+        {
+            base.andirProducto(pro)
 
-        Toast.makeText(productViewModel.getContext(), "El pago se ha procesado correctamente.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(productViewModel.getContext(), "El pago se ha procesado correctamente.", Toast.LENGTH_SHORT).show()
+        }
 
         var intent = Intent(productViewModel.getContext(), MainActivity:: class.java)
 

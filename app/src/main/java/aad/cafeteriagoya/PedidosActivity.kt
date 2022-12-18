@@ -7,6 +7,7 @@ import aad.cafeteriagoya.sqlite.MiBDOpenHelper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 
 class PedidosActivity : AppCompatActivity()
@@ -19,7 +20,6 @@ class PedidosActivity : AppCompatActivity()
         binding = ActivityPedidosBinding.inflate(layoutInflater)
 
         iniciarRecicler()
-
 
         binding?.btCasa?.setOnClickListener{
             casita()
@@ -50,7 +50,11 @@ class PedidosActivity : AppCompatActivity()
 
     fun dameID(pos: Int)
     {
+        intent = Intent(this, MostrarPedido::class.java).apply {
+            putExtra("id", pos)
+        }
 
+        startActivity(intent)
     }
 
 

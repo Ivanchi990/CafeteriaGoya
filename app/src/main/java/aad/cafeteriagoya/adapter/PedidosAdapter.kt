@@ -7,15 +7,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class PedidosAdapter(private val onClickListener: (Int) -> Unit): RecyclerView.Adapter<PedidosViewHolder>()
+class PedidosAdapter(private val onClickListener:
+                         (Int) -> Unit): RecyclerView.Adapter<PedidosViewHolder>()
 {
     private lateinit var context: Context
-    lateinit var pedidos: Cursor
+    lateinit var cursor: Cursor
 
     fun PedidosAdapter(context: Context, cursor: Cursor)
     {
         this.context = context
-        this.pedidos = cursor
+        this.cursor = cursor
     }
 
 
@@ -29,14 +30,14 @@ class PedidosAdapter(private val onClickListener: (Int) -> Unit): RecyclerView.A
 
     override fun onBindViewHolder(holder: PedidosViewHolder, position: Int)
     {
-        pedidos.move(position)
+        cursor.move(position)
 
-        holder.render(pedidos.getInt(0), pedidos.getString(1), onClickListener)
+        holder.render(cursor.getInt(0), cursor.getString(1), onClickListener)
     }
 
 
     override fun getItemCount(): Int
     {
-        return pedidos.count
+        return cursor.count
     }
 }
