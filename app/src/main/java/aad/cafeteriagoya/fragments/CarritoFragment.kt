@@ -68,6 +68,8 @@ class CarritoFragment : Fragment()
             pro = pro + p.id + "-"
         }
 
+        pro = pro.substring(pro.length-1)
+
         var base = productViewModel.getDatabase()
 
         if(productViewModel.carrito.size  > 0)

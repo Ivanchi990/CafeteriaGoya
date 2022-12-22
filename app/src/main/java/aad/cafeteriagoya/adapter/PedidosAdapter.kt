@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class PedidosAdapter(private val onClickListener:
-                         (Int) -> Unit): RecyclerView.Adapter<PedidosViewHolder>()
+class PedidosAdapter(private val onClickListener: (Int) -> Unit) : RecyclerView.Adapter<PedidosViewHolder>()
 {
     private lateinit var context: Context
     lateinit var cursor: Cursor
@@ -19,25 +18,19 @@ class PedidosAdapter(private val onClickListener:
         this.cursor = cursor
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidosViewHolder
     {
         val layoutInflater = LayoutInflater.from(parent.context)
-
         return PedidosViewHolder(layoutInflater.inflate(R.layout.item_pedido, parent, false))
     }
 
 
     override fun onBindViewHolder(holder: PedidosViewHolder, position: Int)
     {
-        cursor.move(position)
+        cursor.moveToPosition(position)
 
         holder.render(cursor.getInt(0), cursor.getString(1), onClickListener)
     }
 
-
-    override fun getItemCount(): Int
-    {
-        return cursor.count
-    }
+    override fun getItemCount(): Int = cursor.count
 }

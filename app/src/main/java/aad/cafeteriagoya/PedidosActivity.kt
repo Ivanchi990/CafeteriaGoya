@@ -50,7 +50,7 @@ class PedidosActivity : AppCompatActivity()
 
     fun dameID(pos: Int)
     {
-        intent = Intent(this, MostrarPedido::class.java).apply {
+        intent = Intent(this, VerPedido::class.java).apply {
             putExtra("id", pos)
         }
 
